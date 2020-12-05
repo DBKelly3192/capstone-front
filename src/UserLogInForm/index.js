@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Segment } from 'semantic-ui-react'
 
 export default class UserLogInForm extends Component {
   constructor(props) {
@@ -31,8 +31,11 @@ export default class UserLogInForm extends Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Form.Group inline>
+        <Segment stacked>
           <Form.Input
+            required
+            icon='user'
+            iconPosition='left'
             type='text'
             placeholder='Email or Username'
             name='emailOrUsername'
@@ -40,14 +43,17 @@ export default class UserLogInForm extends Component {
             onChange={this.handleChange}
           />
           <Form.Input
+            required
+            icon='lock'
+            iconPosition='left'
             type='password'
             placeholder='Password'
             name='password'
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <Form.Button type='submit'>Log In</Form.Button>
-        </Form.Group>
+          <Form.Button fluid type='submit'>Log In</Form.Button>
+        </Segment>
       </Form>
     )
   }

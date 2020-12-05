@@ -34,59 +34,60 @@ export default class UserCreateForm extends Component {
   render() {
     return (
       <Modal
+        closeIcon
+        size='mini'
         as={Form}
         open={this.props.displayUserCreateForm}
+        onClose={this.props.toggleUserCreateForm}
         onSubmit={this.handleSubmit}
       >
         <Modal.Header>Create New User</Modal.Header>
         <Modal.Content image>
-          <Image size="medium" src="https://t4.ftcdn.net/jpg/02/11/73/73/360_F_211737333_nxBcIVfrybNy6nRiewn9Ynh20UJQCfSp.jpg" wrapped />
-          <Modal.Description>
-            <Header>Enter your information</Header>
-            <Grid columns={2} stackable>
-              <Grid.Column>
-                <Label>Username:</Label>
-                <Input
+          <Grid>
+            <Grid.Column>
+              <Image
+                fluid
+                size="medium"
+                src="https://t4.ftcdn.net/jpg/02/11/73/73/360_F_211737333_nxBcIVfrybNy6nRiewn9Ynh20UJQCfSp.jpg"
+              />
+              <Modal.Description>
+                <Form.Input
+                  fluid
+                  required
                   type="text"
                   name="username"
-                  value={this.state.username}
                   placeholder="Enter a Username"
+                  value={this.state.username}
                   onChange={this.handleChange}
                 />
-              </Grid.Column>
-              <Grid.Column>
-                <Label>Email:</Label>
-                <Input
+                <Form.Input
+                  fluid
+                  required
                   type="text"
                   name="email"
-                  value={this.state.email}
                   placeholder="Enter an Email"
+                  value={this.state.email}
                   onChange={this.handleChange}
                 />
-              </Grid.Column>
-              <Grid.Column>
-                <Label>Password:</Label>
-                <Input
+                <Form.Input
+                  fluid
+                  required
                   type="password"
                   name="password"
-                  value={this.state.password}
                   placeholder="Enter a Password"
+                  value={this.state.password}
                   onChange={this.handleChange}
                 />
-              </Grid.Column>
-            </Grid>
-          </Modal.Description>
+              </Modal.Description>
+            </Grid.Column>
+          </Grid>
         </Modal.Content>
         <Modal.Actions>
           <Button
-            color='black'
-            onClick={this.props.toggleUserCreateForm}>Cancel</Button>
-          <Button
-            content="Login"
-            labelPosition="right"
-            icon="checkmark"
-            type="Submit"
+            fluid
             positive
+            content="Create User"
+            type="Submit"
           />
         </Modal.Actions>
       </Modal>
