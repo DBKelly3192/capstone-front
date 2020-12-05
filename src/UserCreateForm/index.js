@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Image, Input, Label, Modal } from 'semantic-ui-react'
+import { Button, Form, Image, Modal, Segment } from 'semantic-ui-react'
 
 export default class UserCreateForm extends Component {
   constructor(props) {
@@ -43,53 +43,48 @@ export default class UserCreateForm extends Component {
       >
         <Modal.Header>Create New User</Modal.Header>
         <Modal.Content image>
-          <Grid>
-            <Grid.Column>
-              <Image
+          <Segment stacked>
+            <Image
+              fluid
+              src="https://t4.ftcdn.net/jpg/02/11/73/73/360_F_211737333_nxBcIVfrybNy6nRiewn9Ynh20UJQCfSp.jpg"
+            />
+            <Modal.Description>
+              <Form.Input
                 fluid
-                size="medium"
-                src="https://t4.ftcdn.net/jpg/02/11/73/73/360_F_211737333_nxBcIVfrybNy6nRiewn9Ynh20UJQCfSp.jpg"
+                required
+                type="text"
+                name="username"
+                placeholder="Enter a Username"
+                value={this.state.username}
+                onChange={this.handleChange}
               />
-              <Modal.Description>
-                <Form.Input
-                  fluid
-                  required
-                  type="text"
-                  name="username"
-                  placeholder="Enter a Username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  fluid
-                  required
-                  type="text"
-                  name="email"
-                  placeholder="Enter an Email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  fluid
-                  required
-                  type="password"
-                  name="password"
-                  placeholder="Enter a Password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </Modal.Description>
-            </Grid.Column>
-          </Grid>
+              <Form.Input
+                fluid
+                required
+                type="text"
+                name="email"
+                placeholder="Enter an Email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+              <Form.Input
+                fluid
+                required
+                type="password"
+                name="password"
+                placeholder="Enter a Password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <Button
+                fluid
+                positive
+                type="Submit"
+                content="Create User"
+              />
+            </Modal.Description>
+          </Segment>
         </Modal.Content>
-        <Modal.Actions>
-          <Button
-            fluid
-            positive
-            content="Create User"
-            type="Submit"
-          />
-        </Modal.Actions>
       </Modal>
     )
   }

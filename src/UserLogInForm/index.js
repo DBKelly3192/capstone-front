@@ -30,29 +30,35 @@ export default class UserLogInForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={ this.handleSubmit }>
         <Segment stacked>
           <Form.Input
             required
+            type='text'
+            autoComplete="username email"
             icon='user'
             iconPosition='left'
-            type='text'
-            placeholder='Email or Username'
             name='emailOrUsername'
-            value={this.state.emailOrUsername}
-            onChange={this.handleChange}
+            placeholder='Email or Username'
+            value={ this.state.emailOrUsername }
+            onChange={ this.handleChange }
           />
           <Form.Input
             required
+            type='password'
+            autoComplete="current-password"
             icon='lock'
             iconPosition='left'
-            type='password'
-            placeholder='Password'
             name='password'
-            value={this.state.password}
-            onChange={this.handleChange}
+            placeholder='Password'
+            value={ this.state.password }
+            onChange={ this.handleChange }
           />
-          <Form.Button fluid type='submit'>Log In</Form.Button>
+          <Form.Button
+            fluid
+            type='submit'
+            content="Log In"
+          />
         </Segment>
       </Form>
     )

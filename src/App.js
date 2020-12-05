@@ -2,7 +2,7 @@ import './App.css'
 import Dashboard from './Dashboard'
 import UserLogInForm from './UserLogInForm'
 import UserCreateForm from './UserCreateForm'
-import { Button, Grid, Message, Segment } from 'semantic-ui-react'
+import { Button, Grid, Icon, Segment } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
 export default class App extends Component {
@@ -89,11 +89,25 @@ export default class App extends Component {
             style={{ height: '100vh' }}
           >
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Segment stacked>
-                <UserLogInForm
-                  logInUser={this.logInUser}
+              <Icon.Group>
+                <Icon
+                  color='green'
+                  name='tree'
+                  size='massive'
                 />
-                <Button fluid onClick={this.toggleUserCreateForm}>Create New User</Button>
+                <Icon
+                  color='olive'
+                  name='play circle outline'
+                  size='big'
+                />
+              </Icon.Group>
+              <Segment stacked>
+                <UserLogInForm logInUser={this.logInUser} />
+                <Button
+                  fluid
+                  content="Create New User"
+                  onClick={this.toggleUserCreateForm}
+                />
                 {
                   this.state.displayUserCreateForm
                   &&
