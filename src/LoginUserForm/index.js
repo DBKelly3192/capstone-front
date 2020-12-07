@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Image, Input, Label, Modal } from 'semantic-ui-react'
+import { Form, Segment } from 'semantic-ui-react'
 
-export default class LoginUserForm extends Component {
+export default class LogInUserForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      email: '',
+      emailOrUsername: '',
       password: ''
     }
   }
@@ -20,64 +20,47 @@ export default class LoginUserForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    this.props.loginUser(this.state)
-    this.props.toggleLoginUserForm()
+    this.props.logInUser(this.state)
 
     this.setState({
-      email: '',
+      emailOrUsername: '',
       password: ''
     })
   }
 
   render() {
     return (
-      <Modal
-        as={Form}
-        open={this.props.displayLoginUserForm}
-        onSubmit={this.handleSubmit}
-      >
-        <Modal.Header>Login</Modal.Header>
-        <Modal.Content image>
-          <Image size="medium" src="https://t4.ftcdn.net/jpg/02/11/73/73/360_F_211737333_nxBcIVfrybNy6nRiewn9Ynh20UJQCfSp.jpg" wrapped />
-          <Modal.Description>
-            <Header>Enter your information</Header>
-            <Grid columns={2} stackable>
-              <Grid.Column>
-                <Label>Email:</Label>
-                <Input
-                  type="text"
-                  name="email"
-                  value={this.state.email}
-                  placeholder="Enter your email"
-                  onChange={this.handleChange}
-                />
-              </Grid.Column>
-              <Grid.Column>
-                <Label>Password:</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  placeholder="Enter your password"
-                  onChange={this.handleChange}
-                />
-              </Grid.Column>
-            </Grid>
-          </Modal.Description>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button
-            color='black'
-            onClick={this.props.toggleLoginUserForm}>Cancel</Button>
-          <Button
-            content="Login"
-            labelPosition="right"
-            icon="checkmark"
-            type="Submit"
-            positive
+      <Form onSubmit={ this.handleSubmit }>
+        <Segment stacked>
+          <Form.Input
+            required
+            type='text'
+            autoComplete="username email"
+            icon='user'
+            iconPosition='left'
+            name='emailOrUsername'
+            placeholder='Email or Username'
+            value={ this.state.emailOrUsername }
+            onChange={ this.handleChange }
           />
-        </Modal.Actions>
-      </Modal>
+          <Form.Input
+            required
+            type='password'
+            autoComplete="current-password"
+            icon='lock'
+            iconPosition='left'
+            name='password'
+            placeholder='Password'
+            value={ this.state.password }
+            onChange={ this.handleChange }
+          />
+          <Form.Button
+            fluid
+            type='submit'
+            content="Log In"
+          />
+        </Segment>
+      </Form>
     )
   }
 }

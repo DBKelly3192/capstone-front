@@ -1,7 +1,7 @@
 import './App.css'
 import Dashboard from './Dashboard'
-import UserLogInForm from './UserLogInForm'
-import UserCreateForm from './UserCreateForm'
+import LogInUserForm from './LogInUserForm'
+import CreateUserForm from './CreateUserForm'
 import { Button, Grid, Icon, Segment } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
@@ -10,11 +10,10 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      posts: [],
       displayDashboard: false,
-      displayUserCreateForm: false,
+      displayCreateUserForm: false,
       loggedIn: false,
-      currentUserId: ''
+      loggedInUserId: ''
     }
   }
 
@@ -22,11 +21,11 @@ export default class App extends Component {
     try {
       const url = process.env.REACT_APP_API_URL + '/users/register'
       const createUserResponse = await fetch(url, {
-        method: 'POST',
+        body: JSON.stringify(userToAdd),
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userToAdd)
+        method: 'POST'
       })
       const createUserJson = await createUserResponse.json()
 
@@ -60,7 +59,7 @@ export default class App extends Component {
         console.log('USER LOGGED IN')
         this.setState({
           loggedIn: !this.state.loggedIn,
-          currentUserId: logInUserJson.data.id,
+          loggedInUserId: logInUserJson.data.id,
           displayDashboard: !this.state.displayDashboard
         })
       }
@@ -69,9 +68,29 @@ export default class App extends Component {
     }
   }
 
-  toggleUserCreateForm = () => {
+  logOutUser = async () => {
+    try {
+      const url = process.env.REACT_APP_API_URL + '/users/logout'
+      const logoutResponse = await fetch(url, {
+        credentials: 'include'
+      })
+      const logoutJson = await logoutResponse.json()
+
+      if(logoutResponse.status === 200) {
+        console.log('USER LOGGED OUT.', logoutJson)
+        this.setState({
+          loggedIn: false,
+          displayDashboard: false
+        })
+      }
+    } catch(err) {
+      console.error('ERROR LOGGING OUT.', err)
+    }
+  }
+
+  toggleCreateUserForm = () => {
     this.setState({
-      displayUserCreateForm: !this.state.displayUserCreateForm
+      displayCreateUserForm: !this.state.displayCreateUserForm
     })
   }
 
@@ -81,7 +100,11 @@ export default class App extends Component {
         {
           this.state.displayDashboard
           ?
-          <Dashboard />
+          <Dashboard
+            logOutUser={ this.logOutUser }
+            loggedIn={ this.state.loggedIn }
+            loggedInUserId={ this.state.loggedInUserId }
+          />
           :
           <Grid
             textAlign='center'
@@ -102,19 +125,19 @@ export default class App extends Component {
                 />
               </Icon.Group>
               <Segment stacked>
-                <UserLogInForm logInUser={this.logInUser} />
+                <LogInUserForm logInUser={ this.logInUser } />
                 <Button
                   fluid
                   content="Create New User"
-                  onClick={this.toggleUserCreateForm}
+                  onClick={ this.toggleCreateUserForm }
                 />
                 {
-                  this.state.displayUserCreateForm
+                  this.state.displayCreateUserForm
                   &&
-                  <UserCreateForm
-                    createUser={this.createUser}
-                    toggleUserCreateForm={this.toggleUserCreateForm}
-                    displayUserCreateForm={this.state.displayUserCreateForm}
+                  <CreateUserForm
+                    createUser={ this.createUser }
+                    toggleCreateUserForm={ this.toggleCreateUserForm }
+                    displayCreateUserForm={ this.state.displayCreateUserForm }
                   />
                 }
               </Segment>

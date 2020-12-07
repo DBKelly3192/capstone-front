@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Image, Modal, Segment } from 'semantic-ui-react'
 
-export default class UserCreateForm extends Component {
+export default class CreateUserForm extends Component {
   constructor(props) {
     super(props)
 
@@ -22,7 +22,7 @@ export default class UserCreateForm extends Component {
     event.preventDefault()
 
     this.props.createUser(this.state)
-    this.props.toggleUserCreateForm()
+    this.props.toggleCreateUserForm()
 
     this.setState({
       username: '',
@@ -32,14 +32,16 @@ export default class UserCreateForm extends Component {
   }
 
   render() {
+    const closeOnDimmerClick = false
     return (
       <Modal
         closeIcon
+        as={ Form }
         size='mini'
-        as={Form}
-        open={this.props.displayUserCreateForm}
-        onClose={this.props.toggleUserCreateForm}
-        onSubmit={this.handleSubmit}
+        open={ this.props.displayCreateUserForm }
+        closeOnDimmerClick={ closeOnDimmerClick }
+        onClose={ this.props.toggleCreateUserForm }
+        onSubmit={ this.handleSubmit }
       >
         <Modal.Header>Create New User</Modal.Header>
         <Modal.Content image>
@@ -53,28 +55,31 @@ export default class UserCreateForm extends Component {
                 fluid
                 required
                 type="text"
+                autoComplete="username"
                 name="username"
                 placeholder="Enter a Username"
-                value={this.state.username}
-                onChange={this.handleChange}
+                value={ this.state.username }
+                onChange={ this.handleChange }
               />
               <Form.Input
                 fluid
                 required
-                type="text"
+                type="email"
+                autoComplete="email"
                 name="email"
                 placeholder="Enter an Email"
-                value={this.state.email}
-                onChange={this.handleChange}
+                value={ this.state.email }
+                onChange={ this.handleChange }
               />
               <Form.Input
                 fluid
                 required
                 type="password"
+                autoComplete="new-password"
                 name="password"
                 placeholder="Enter a Password"
-                value={this.state.password}
-                onChange={this.handleChange}
+                value={ this.state.password }
+                onChange={ this.handleChange }
               />
               <Button
                 fluid
