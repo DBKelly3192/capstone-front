@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Segment } from 'semantic-ui-react'
 
-export default class LogInUserForm extends Component {
+export default class LoginUserForm extends Component {
   constructor(props) {
     super(props)
 

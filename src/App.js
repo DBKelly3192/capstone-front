@@ -1,6 +1,6 @@
 import './App.css'
 import Dashboard from './Dashboard'
-import LogInUserForm from './LogInUserForm'
+import LoginUserForm from './LoginUserForm'
 import CreateUserForm from './CreateUserForm'
 import { Button, Grid, Icon, Segment } from 'semantic-ui-react'
 import React, { Component } from 'react'
@@ -125,7 +125,7 @@ export default class App extends Component {
                 />
               </Icon.Group>
               <Segment stacked>
-                <LogInUserForm logInUser={ this.logInUser } />
+                <LoginUserForm logInUser={ this.logInUser } />
                 <Button
                   fluid
                   content="Create New User"
