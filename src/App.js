@@ -18,7 +18,6 @@ export default class App extends Component {
   }
 
   createUser = async (userToAdd) => {
-    console.log(userToAdd)
     try {
       const url = process.env.REACT_APP_API_URL + '/users/register'
       const createUserResponse = await fetch(url, {
