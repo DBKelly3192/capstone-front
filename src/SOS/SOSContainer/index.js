@@ -68,6 +68,7 @@ export default class SOSContainer extends Component {
       console.log(createSOSResponse.status)
       if (createSOSResponse.status === 200) {
         console.log('SOS CREATED.')
+        console.log(createSOSJson.data)
         this.setState({
           displayShowSOSs: false,
           soss: createSOSJson.data
