@@ -51,7 +51,6 @@ export default class CreateSOSForm extends Component {
           <Segment stacked>
             <Modal.Description>
               <Form.Input
-                fluid
                 required
                 type="text"
                 name="activity"
@@ -60,7 +59,6 @@ export default class CreateSOSForm extends Component {
                 onChange={ this.handleChange }
               />
               <Form.Input
-                fluid
                 required
                 type="text"
                 name="location"
@@ -69,7 +67,6 @@ export default class CreateSOSForm extends Component {
                 onChange={ this.handleChange }
               />
               <Form.Input
-                fluid
                 required
                 type="text"
                 name="start"
@@ -78,7 +75,6 @@ export default class CreateSOSForm extends Component {
                 onChange={ this.handleChange }
               />
               <Form.Input
-                fluid
                 required
                 type="text"
                 name="finish"
@@ -87,7 +83,6 @@ export default class CreateSOSForm extends Component {
                 onChange={ this.handleChange }
               />
               <Form.Input
-                fluid
                 required
                 control="textarea"
                 name="description"
@@ -96,7 +91,6 @@ export default class CreateSOSForm extends Component {
                 onChange={ this.handleChange }
               />
               <Button
-                fluid
                 positive
                 type="Submit"
                 content="Create SOS"
