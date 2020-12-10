@@ -21,12 +21,15 @@ export default class ShowSOS extends Component {
     return (
       <React.Fragment>
         <Card
+          className='card'
+          fluid
           centered={ true }
           color={ 'blue' }
           key={ this.props.sosToEdit.id }
           raised={ true }
         >
           <Image
+            className='photo'
             wrapped
             src={ this.props.sosToEdit.user.photo }
             ui={ false }

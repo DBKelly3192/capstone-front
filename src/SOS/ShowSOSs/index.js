@@ -1,39 +1,40 @@
-import { Card, Image } from 'semantic-ui-react'
+import { Item, Label, Segment } from 'semantic-ui-react'
 import React from 'react'
 
 export default function ShowSOSs(props) {
 
   const soss = props.soss.map(sos => {
     return (
-      <Card
+      <Item
         key={ sos.id }
-        raised={ true }
-        color={ 'blue' }
-        onClick={ () => props.getOneSOS(sos.id) }
-      >
-        <Image
-          wrapped
-          src={ sos.user.photo }
-          ui={ false }
-        />
-        <Card.Content>
-          <Card.Header>
-            { sos.user.username }
-          </Card.Header>
-          <Card.Meta>
-            { sos.activity } at { sos.location }
-          </Card.Meta>
-          <Card.Description>
-            { sos.description }
-          </Card.Description>
-        </Card.Content>
-      </Card>
+        onClick={ () => props.getOneSOS(sos.id) }>
+      <Item.Image
+        size='small'
+        src={ sos.user.photo }
+      />
+      <Item.Content>
+        <Item.Header verticalalign='middle'>
+          { sos.user.username }
+        </Item.Header>
+        <Item.Meta>
+          <span>From { sos.start } to { sos.finish }.</span>
+        </Item.Meta>
+        <Item.Description>
+          <p>{ sos.description }</p>
+        </Item.Description>
+        <Item.Extra>
+          <Label>{ sos.activity }</Label>
+        </Item.Extra>
+      </Item.Content>
+    </Item>
     )
   })
 
   return (
-    <Card.Group centered={ true }>
-      { soss }
-    </Card.Group>
+    <Segment id='showContainer'>
+      <Item.Group>
+        { soss }
+      </Item.Group>
+    </Segment>
   )
 }

@@ -31,7 +31,6 @@ export default class Dashboard extends Component {
     return(
       <React.Fragment>
         <Menu size='huge'>
-          <Container>
           <Menu.Item>
             <Button
               content='View SOS'
@@ -44,13 +43,12 @@ export default class Dashboard extends Component {
               onClick={ this.viewPostContainer }
             />
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item position='right'>
             <Button
               content='Log Out'
               onClick={ this.props.logOutUser }
             />
           </Menu.Item>
-          </Container>
         </Menu>
         {
           this.state.displayPostContainer

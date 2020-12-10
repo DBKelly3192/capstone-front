@@ -1,7 +1,7 @@
 import CreateSOSForm from '../CreateSOSForm'
 import ShowSOS from '../ShowSOS'
 import ShowSOSs from '../ShowSOSs'
-import { Button, Container, Menu } from 'semantic-ui-react'
+import { Button, Container, Grid, Menu } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
 export default class SOSContainer extends Component {
@@ -154,49 +154,53 @@ export default class SOSContainer extends Component {
     return (
       <React.Fragment>
         <Menu size='small'>
-          <Container>
-            <Menu.Item>
-              <Button
-                content='Create SOS'
-                onClick={ this.toggleCreateSOSForm }
-              />
-              <Button
-                content='View Your SOSs'
-                onClick={ this.getMySOSs }
-              />
-            </Menu.Item>
-          </Container>
+          <Menu.Item>
+            <Button
+              content='Create SOS'
+              onClick={ this.toggleCreateSOSForm }
+            />
+          </Menu.Item>
+          <Menu.Item>
+            <Button
+              content='View Your SOSs'
+              onClick={ this.getMySOSs }
+            />
+          </Menu.Item>
         </Menu>
-        {
-          this.state.displayShowSOS
-          &&
-          <ShowSOS
-            updateSOS={ this.updateSOS }
-            deleteSOS={ this.deleteSOS }
-            sosToEdit={ this.state.sosToEdit }
-            loggedIn={ this.props.loggedIn }
-            loggedInUserID={ this.props.loggedInUserID }
-          />
-        }
-        {
-          this.state.displayShowSOSs
-          &&
-          <ShowSOSs
-            getOneSOS={ this.getOneSOS }
-            soss={ this.state.soss }
-            loggedIn={ this.props.loggedIn }
-            loggedInUserID={ this.props.loggedInUserID }
-          />
-        }
-        {
-          this.state.displayCreateSOSForm
-          &&
-          <CreateSOSForm
-            createSOS={ this.createSOS }
-            toggleCreateSOSForm={ this.toggleCreateSOSForm }
-            displayCreateSOSForm={ this.state.displayCreateSOSForm }
-          />
-        }
+        <Grid>
+          <Grid.Column style={{ maxWidth: 1000 }}>
+            {
+              this.state.displayShowSOS
+              &&
+              <ShowSOS
+                updateSOS={ this.updateSOS }
+                deleteSOS={ this.deleteSOS }
+                sosToEdit={ this.state.sosToEdit }
+                loggedIn={ this.props.loggedIn }
+                loggedInUserID={ this.props.loggedInUserID }
+              />
+            }
+            {
+              this.state.displayShowSOSs
+              &&
+              <ShowSOSs
+                getOneSOS={ this.getOneSOS }
+                soss={ this.state.soss }
+                loggedIn={ this.props.loggedIn }
+                loggedInUserID={ this.props.loggedInUserID }
+              />
+            }
+            {
+              this.state.displayCreateSOSForm
+              &&
+              <CreateSOSForm
+                createSOS={ this.createSOS }
+                toggleCreateSOSForm={ this.toggleCreateSOSForm }
+                displayCreateSOSForm={ this.state.displayCreateSOSForm }
+              />
+            }
+          </Grid.Column>
+        </Grid>
       </React.Fragment>
     )
   }
