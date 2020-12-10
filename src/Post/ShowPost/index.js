@@ -23,25 +23,25 @@ export default class ShowPost extends Component {
         <Card
           centered={ true }
           color={ 'blue' }
-          key={ this.props.posts.id }
+          key={ this.props.postToEdit.id }
           raised={ true }
         >
           <Image
-            src={ this.props.posts.user.photo }
+            src={ this.props.postToEdit.user.photo }
             wrapped ui={ false }
           />
           <Card.Content>
             <Card.Header>
-              { this.props.posts.user.username }
+              { this.props.postToEdit.user.username }
             </Card.Header>
             <Card.Meta>
-              { this.props.posts.activity } at { this.props.posts.location }
+              { this.props.postToEdit.activity } at { this.props.postToEdit.location }
             </Card.Meta>
             <Card.Description>
-              { this.props.posts.description }
+              { this.props.postToEdit.description }
             </Card.Description>
             {
-              this.props.posts.user.id === this.props.loggedInUserId
+              this.props.postToEdit.user.id === this.props.loggedInUserID
               &&
                 <React.Fragment>
                   <Button onClick={ this.props.deletePost }>DELETE</Button>
@@ -57,7 +57,7 @@ export default class ShowPost extends Component {
               toggleEditPostForm={ this.toggleEditPostForm }
               updatePost={ this.props.updatePost }
               displayEditPostForm={ this.state.displayEditPostForm }
-              posts={ this.props.posts }
+              postToEdit={ this.props.postToEdit }
             />
         }
       </React.Fragment>

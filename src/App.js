@@ -1,7 +1,9 @@
 import './App.css'
 import Dashboard from './Dashboard'
-import LoginUserForm from './LoginUserForm'
-import CreateUserForm from './CreateUserForm'
+import LoginUserForm from './User/LoginUserForm'
+import CreateUserForm from './User/CreateUserForm'
+// import MapContainer from './MapContainer'
+// import SimpleMap from './SimpleMap'
 import { Button, Grid, Icon, Segment } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
@@ -13,7 +15,7 @@ export default class App extends Component {
       displayDashboard: false,
       displayCreateUserForm: false,
       loggedIn: false,
-      loggedInUserId: ''
+      loggedInUserID: ''
     }
   }
 
@@ -28,11 +30,10 @@ export default class App extends Component {
         method: 'POST'
       })
       const createUserJson = await createUserResponse.json()
-
-      console.log(createUserJson.message)
-
-      if (createUserResponse.status === 200) {
+      if (createUserResponse.status === 201) {
         console.log('CREATED USER', createUserJson)
+      } else {
+        alert(createUserJson.message)
       }
     } catch(err) {
       console.log('ERROR CREATING USER.', err)
@@ -40,7 +41,6 @@ export default class App extends Component {
   }
 
   logInUser = async (userToLogIn) => {
-    console.log(userToLogIn)
     try {
       const url = process.env.REACT_APP_API_URL + '/users/login'
       const logInUserResponse = await fetch(url, {
@@ -52,16 +52,15 @@ export default class App extends Component {
         credentials: 'include'
       })
       const logInUserJson = await logInUserResponse.json()
-
-      console.log(logInUserJson.message)
-
       if (logInUserResponse.status === 200) {
-        console.log('USER LOGGED IN')
+        console.log('USER LOGGED IN', logInUserJson)
         this.setState({
           loggedIn: !this.state.loggedIn,
-          loggedInUserId: logInUserJson.data.id,
+          loggedInUserID: logInUserJson.data.id,
           displayDashboard: !this.state.displayDashboard
         })
+      } else {
+        alert(logInUserJson.message)
       }
     } catch(err) {
       console.log('ERROR LOGGING IN.', err)
@@ -80,6 +79,7 @@ export default class App extends Component {
         console.log('USER LOGGED OUT.', logoutJson)
         this.setState({
           loggedIn: false,
+          loggedInUserID: '',
           displayDashboard: false
         })
       }
@@ -103,7 +103,7 @@ export default class App extends Component {
           <Dashboard
             logOutUser={ this.logOutUser }
             loggedIn={ this.state.loggedIn }
-            loggedInUserId={ this.state.loggedInUserId }
+            loggedInUserID={ this.state.loggedInUserID }
           />
           :
           <Grid

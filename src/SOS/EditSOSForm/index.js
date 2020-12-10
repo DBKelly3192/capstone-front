@@ -1,14 +1,16 @@
 import { Button, Form, Label, Modal } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
-export default class EditPostForm extends Component {
+export default class EditSOSForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      activity: this.props.posts.activity,
-      description: this.props.posts.description,
-      location: this.props.posts.location
+      activity: this.props.sosToEdit.activity,
+      description: this.props.sosToEdit.description,
+      finish: this.props.sosToEdit.finish,
+      location: this.props.sosToEdit.location,
+      start: this.props.sosToEdit.start,
     }
   }
 
@@ -21,13 +23,15 @@ export default class EditPostForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    this.props.updatePost(this.state)
-    this.props.toggleEditPostForm()
+    this.props.updateSOS(this.state)
+    this.props.toggleEditSOSForm()
 
     this.setState({
       activity: '',
       description: '',
-      location: ''
+      finish: '',
+      location: '',
+      start: ''
     })
   }
 
@@ -37,12 +41,12 @@ export default class EditPostForm extends Component {
       <Modal
         closeIcon
         as={ Form }
-        open={ this.props.displayEditPostForm }
+        open={ this.props.displayEditSOSForm }
         closeOnDimmerClick={ closeOnDimmerClick }
-        onClose={ this.props.toggleEditPostForm }
+        onClose={ this.props.toggleEditSOSForm }
         onSubmit={ this.handleSubmit }
       >
-        <Modal.Header>Update Post</Modal.Header>
+        <Modal.Header>Update SOS</Modal.Header>
         <Modal.Content>
           <Modal.Description>
             <Label>Activity:</Label>
@@ -61,6 +65,22 @@ export default class EditPostForm extends Component {
               value={ this.state.location }
               onChange={ this.handleChange }
             />
+            <Label>Start Time:</Label>
+            <Form.Input
+              fluid
+              type="text"
+              name="start"
+              value={ this.state.start }
+              onChange={ this.handleChange }
+            />
+            <Label>End Time:</Label>
+            <Form.Input
+              fluid
+              type="text"
+              name="finish"
+              value={ this.state.finish }
+              onChange={ this.handleChange }
+            />
             <Label>Description:</Label>
             <Form.Input
               rows='2'
@@ -74,7 +94,7 @@ export default class EditPostForm extends Component {
               positive
               type='Submit'
               icon='checkmark'
-              content='Update Post'
+              content='Update SOS'
             />
           </Modal.Description>
         </Modal.Content>

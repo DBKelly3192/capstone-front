@@ -1,7 +1,7 @@
 import { Card, Image } from 'semantic-ui-react'
 import React from 'react'
 
-export default function PostCard(props) {
+export default function ShowPosts(props) {
 
   const posts = props.posts.map(post => {
     return (
@@ -9,7 +9,7 @@ export default function PostCard(props) {
         key={ post.id }
         raised={ true }
         color={ 'blue' }
-        onClick={() => props.getPost(post.id)}
+        onClick={ () => props.getOnePost(post.id) }
       >
         <Image
           wrapped
