@@ -1,3 +1,4 @@
+import SimpleMap from '../../SimpleMap'
 import { Button, Form, Label, Modal } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
@@ -8,7 +9,8 @@ export default class EditPostForm extends Component {
     this.state = {
       activity: this.props.postToEdit.activity,
       description: this.props.postToEdit.description,
-      location: this.props.postToEdit.location
+      lat: this.props.postToEdit.lat,
+      lng: this.props.postToEdit.lng
     }
   }
 
@@ -27,7 +29,15 @@ export default class EditPostForm extends Component {
     this.setState({
       activity: '',
       description: '',
-      location: ''
+      lat: '',
+      lng: ''
+    })
+  }
+
+  selectLocation = (event) => {
+    this.setState({
+      lat: event.lat,
+      lng: event.lng
     })
   }
 
@@ -53,20 +63,33 @@ export default class EditPostForm extends Component {
               value={ this.state.activity }
               onChange={ this.handleChange }
             />
-            <Label>Location:</Label>
-            <Form.Input
-              fluid
-              type='text'
-              name='location'
-              value={ this.state.location }
-              onChange={ this.handleChange }
-            />
             <Label>Description:</Label>
             <Form.Input
               rows='2'
               control='textarea'
               name='description'
               value={ this.state.description }
+              onChange={ this.handleChange }
+            />
+            <Form.Input
+              className='hidden'
+              required
+              type="text"
+              name="lat"
+              value={ this.state.lat }
+              onChange={ this.handleChange }
+            />
+            <SimpleMap
+              selectLocation={ this.selectLocation }
+              lat={ this.state.lat }
+              lng={ this.state.lng }
+            />
+            <Form.Input
+              className='hidden'
+              required
+              type="text"
+              name="lng"
+              value={ this.state.lng }
               onChange={ this.handleChange }
             />
             <Button

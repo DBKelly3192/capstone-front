@@ -19,7 +19,7 @@ export default class ShowSOS extends Component {
   }
 
   selectLocation = (event) => {
-    
+
   }
 
   render() {
@@ -74,56 +74,3 @@ export default class ShowSOS extends Component {
     )
   }
 }
-
-// <MapContainer
-//   lat='38.551115'
-//   lng='-78.315662'
-// />
-
-// <React.Fragment>
-//   <Card
-//     className='card'
-//     fluid
-//     centered={ true }
-//     color={ 'blue' }
-//     key={ this.props.sosToEdit.id }
-//     raised={ true }
-//   >
-//     <Image
-//       className='photo'
-//       wrapped
-//       src={ this.props.sosToEdit.user.photo }
-//       ui={ false }
-//     />
-//     <Card.Content>
-//       <Card.Header>
-//         { this.props.sosToEdit.user.username }
-//       </Card.Header>
-//       <Card.Meta>
-//         { this.props.sosToEdit.activity } at { this.props.sosToEdit.location }
-//       </Card.Meta>
-//       <Card.Description>
-//         { this.props.sosToEdit.description }
-//       </Card.Description>
-//       {
-//         this.props.sosToEdit.user.id === this.props.loggedInUserID
-//         &&
-//           <React.Fragment>
-//             <Button onClick={ this.props.deleteSOS }>DELETE</Button>
-//             <Button onClick={ this.toggleEditSOSForm }>EDIT</Button>
-//           </React.Fragment>
-//       }
-//       <SimpleMap />
-//     </Card.Content>
-//   </Card>
-//   {
-//     this.state.displayEditSOSForm
-//     &&
-//       <EditSOSForm
-//         toggleEditSOSForm={ this.toggleEditSOSForm }
-//         displayEditSOSForm={ this.state.displayEditSOSForm }
-//         sosToEdit={ this.props.sosToEdit }
-//         updateSOS={ this.props.updateSOS }
-//       />
-//   }
-// </React.Fragment>

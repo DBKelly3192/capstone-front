@@ -1,3 +1,4 @@
+import SimpleMap from '../../SimpleMap'
 import { Button, Form, Modal, Segment } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
@@ -8,7 +9,8 @@ export default class CreatePostForm extends Component {
     this.state = {
       activity: '',
       description: '',
-      location: ''
+      lat: '',
+      lng: ''
     }
   }
 
@@ -27,7 +29,15 @@ export default class CreatePostForm extends Component {
     this.setState({
       activity: '',
       description: '',
-      location: ''
+      lat: '',
+      lng: ''
+    })
+  }
+
+  selectLocation = (event) => {
+    this.setState({
+      lat: event.lat,
+      lng: event.lng
     })
   }
 
@@ -58,19 +68,31 @@ export default class CreatePostForm extends Component {
               <Form.Input
                 fluid
                 required
-                type="text"
-                name="location"
-                placeholder="Enter a Location"
-                value={ this.state.location }
-                onChange={ this.handleChange }
-              />
-              <Form.Input
-                fluid
-                required
                 type="textarea"
                 name="description"
                 placeholder="Enter a Description"
                 value={ this.state.description }
+                onChange={ this.handleChange }
+              />
+              <Form.Input
+                className='hidden'
+                required
+                type="text"
+                name="lat"
+                value={ this.state.lat }
+                onChange={ this.handleChange }
+              />
+              <SimpleMap
+                selectLocation={ this.selectLocation }
+                lat={ this.state.lat }
+                lng={ this.state.lng }
+              />
+              <Form.Input
+                className='hidden'
+                required
+                type="text"
+                name="lng"
+                value={ this.state.lng }
                 onChange={ this.handleChange }
               />
               <Button
