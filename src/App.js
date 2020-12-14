@@ -48,6 +48,7 @@ export default class App extends Component {
         method: 'POST',
         body: JSON.stringify(userToLogIn),
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
         credentials: 'include'

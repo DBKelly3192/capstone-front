@@ -86,6 +86,7 @@ export default class SOSContainer extends Component {
         body: JSON.stringify(updatedSOSInfo),
         credentials: 'include',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
         method: 'PUT'

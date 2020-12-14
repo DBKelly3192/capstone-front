@@ -76,6 +76,7 @@ export default class PostContainer extends Component {
         body: JSON.stringify(postToCreate),
         credentials: 'include',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
         method: 'POST'
@@ -100,6 +101,7 @@ export default class PostContainer extends Component {
         body: JSON.stringify(updatedPostInfo),
         credentials: 'include',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
         method: 'PUT'
