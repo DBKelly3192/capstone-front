@@ -71,14 +71,6 @@ export default class CreateSOSForm extends Component {
               <Form.Input
                 required
                 type="text"
-                name="location"
-                placeholder="Enter a Location"
-                value={ this.state.location }
-                onChange={ this.handleChange }
-              />
-              <Form.Input
-                required
-                type="text"
                 name="start"
                 placeholder="Enter a Start Time"
                 value={ this.state.start }
