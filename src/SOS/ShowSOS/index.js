@@ -1,4 +1,6 @@
 import EditSOSForm from '../EditSOSForm'
+// import MapContainer from '../../MapContainer'
+import SimpleMap from '../../SimpleMap'
 import { Button, Card, Image } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
@@ -52,6 +54,7 @@ export default class ShowSOS extends Component {
                   <Button onClick={ this.toggleEditSOSForm }>EDIT</Button>
                 </React.Fragment>
             }
+            <SimpleMap />
           </Card.Content>
         </Card>
         {
@@ -68,3 +71,8 @@ export default class ShowSOS extends Component {
     )
   }
 }
+
+// <MapContainer
+//   lat='38.551115'
+//   lng='-78.315662'
+// />

@@ -1,6 +1,6 @@
 import PostContainer from '../Post/PostContainer'
 import SOSContainer from '../SOS/SOSContainer'
-import { Button, Container, Menu } from 'semantic-ui-react'
+import { Button, Menu } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
 export default class Dashboard extends Component {

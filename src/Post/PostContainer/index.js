@@ -21,7 +21,7 @@ export default class PostContainer extends Component {
 
   getAllPosts = async () => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/posts/all'
+      const url = process.env.REACT_APP_DATABASE_URL + '/posts/all'
       const postsResponse = await fetch(url)
       const postsJson = await postsResponse.json()
 
@@ -37,7 +37,7 @@ export default class PostContainer extends Component {
 
   getMyPosts = async () => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/posts/my'
+      const url = process.env.REACT_APP_DATABASE_URL + '/posts/my'
       const postsResponse = await fetch(url, { credentials: 'include' })
       const postsJson = await postsResponse.json()
 
@@ -53,7 +53,7 @@ export default class PostContainer extends Component {
 
   getOnePost = async (idOfPost) => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/posts/' + idOfPost
+      const url = process.env.REACT_APP_DATABASE_URL + '/posts/' + idOfPost
       const postResponse = await fetch(url)
       const postJson = await postResponse.json()
 
@@ -71,7 +71,7 @@ export default class PostContainer extends Component {
 
   createPost = async (postToCreate) => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/posts/create'
+      const url = process.env.REACT_APP_DATABASE_URL + '/posts/create'
       const createPostResponse = await fetch(url, {
         body: JSON.stringify(postToCreate),
         credentials: 'include',
@@ -95,7 +95,7 @@ export default class PostContainer extends Component {
 
   updatePost = async (updatedPostInfo) => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/posts/' + this.state.postIDToEdit
+      const url = process.env.REACT_APP_DATABASE_URL + '/posts/' + this.state.postIDToEdit
       const updatePostResponse = await fetch(url, {
         body: JSON.stringify(updatedPostInfo),
         credentials: 'include',
@@ -124,7 +124,7 @@ export default class PostContainer extends Component {
 
   deletePost = async () => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/posts/' + this.state.postIDToDelete
+      const url = process.env.REACT_APP_DATABASE_URL + '/posts/' + this.state.postIDToDelete
       const deletePostResponse = await fetch(url, {
         credentials: 'include',
         method: 'DELETE'

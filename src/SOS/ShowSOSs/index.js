@@ -1,13 +1,12 @@
-import { Item, Label, Segment } from 'semantic-ui-react'
+import { Button, Item, Label, Segment } from 'semantic-ui-react'
 import React from 'react'
+
 
 export default function ShowSOSs(props) {
 
   const soss = props.soss.map(sos => {
     return (
-      <Item
-        key={ sos.id }
-        onClick={ () => props.getOneSOS(sos.id) }>
+      <Item key={ sos.id }>
       <Item.Image
         size='small'
         src={ sos.user.photo }
@@ -23,6 +22,20 @@ export default function ShowSOSs(props) {
           <p>{ sos.description }</p>
         </Item.Description>
         <Item.Extra>
+          <Button
+            primary
+            floated='right'
+            onClick={ () => props.sendEmail(sos.id) }
+          >
+            Notify { sos.user.emergencyFirst } { sos.user.emergencyLast }
+          </Button>
+          <Button
+            primary
+            floated='right'
+            onClick={ () => props.getOneSOS(sos.id) }
+          >
+            View SOS
+          </Button>
           <Label>{ sos.activity }</Label>
         </Item.Extra>
       </Item.Content>
@@ -30,8 +43,11 @@ export default function ShowSOSs(props) {
     )
   })
 
+
+
+
   return (
-    <Segment id='showContainer'>
+    <Segment raised>
       <Item.Group>
         { soss }
       </Item.Group>

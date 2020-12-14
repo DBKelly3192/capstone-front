@@ -1,10 +1,9 @@
 import './App.css'
 import Dashboard from './Dashboard'
 import LoginUserForm from './User/LoginUserForm'
+import Logo from './Image/happyTrails.png'
 import CreateUserForm from './User/CreateUserForm'
-// import MapContainer from './MapContainer'
-// import SimpleMap from './SimpleMap'
-import { Button, Grid, Icon, Segment } from 'semantic-ui-react'
+import { Button, Grid, Image, Segment } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
 export default class App extends Component {
@@ -20,8 +19,9 @@ export default class App extends Component {
   }
 
   createUser = async (userToAdd) => {
+    console.log(userToAdd)
     try {
-      const url = process.env.REACT_APP_API_URL + '/users/register'
+      const url = process.env.REACT_APP_DATABASE_URL + '/users/create'
       const createUserResponse = await fetch(url, {
         body: JSON.stringify(userToAdd),
         headers: {
@@ -42,7 +42,7 @@ export default class App extends Component {
 
   logInUser = async (userToLogIn) => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/users/login'
+      const url = process.env.REACT_APP_DATABASE_URL + '/users/login'
       const logInUserResponse = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(userToLogIn),
@@ -69,7 +69,7 @@ export default class App extends Component {
 
   logOutUser = async () => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/users/logout'
+      const url = process.env.REACT_APP_DATABASE_URL + '/users/logout'
       const logoutResponse = await fetch(url, {
         credentials: 'include'
       })
@@ -112,18 +112,10 @@ export default class App extends Component {
             style={{ height: '100vh' }}
           >
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Icon.Group>
-                <Icon
-                  color='green'
-                  name='tree'
-                  size='massive'
-                />
-                <Icon
-                  color='olive'
-                  name='play circle outline'
-                  size='big'
-                />
-              </Icon.Group>
+              <Image
+                background-color='white'
+                src={ Logo }
+              />
               <Segment stacked>
                 <LoginUserForm logInUser={ this.logInUser } />
                 <Button

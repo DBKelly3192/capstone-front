@@ -1,7 +1,7 @@
 import CreateSOSForm from '../CreateSOSForm'
 import ShowSOS from '../ShowSOS'
 import ShowSOSs from '../ShowSOSs'
-import { Button, Container, Grid, Menu } from 'semantic-ui-react'
+import { Button, Grid, Menu } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
 export default class SOSContainer extends Component {
@@ -21,7 +21,7 @@ export default class SOSContainer extends Component {
 
   getMySOSs = async () => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/sos/my'
+      const url = process.env.REACT_APP_DATABASE_URL + '/sos/my'
       const sosResponse = await fetch(url, { credentials: 'include' })
       const sosJson = await sosResponse.json()
 
@@ -37,7 +37,7 @@ export default class SOSContainer extends Component {
 
   getOneSOS = async (idOfSOS) => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/sos/' + idOfSOS
+      const url = process.env.REACT_APP_DATABASE_URL + '/sos/' + idOfSOS
       const sosResponse = await fetch(url)
       const sosJson = await sosResponse.json()
       console.log(sosJson.data)
@@ -55,7 +55,7 @@ export default class SOSContainer extends Component {
 
   createSOS = async (sosToCreate) => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/sos/create'
+      const url = process.env.REACT_APP_DATABASE_URL + '/sos/create'
       const createSOSResponse = await fetch(url, {
         body: JSON.stringify(sosToCreate),
         credentials: 'include',
@@ -81,7 +81,7 @@ export default class SOSContainer extends Component {
 
   updateSOS = async (updatedSOSInfo) => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/sos/' + this.state.sosIDToEdit
+      const url = process.env.REACT_APP_DATABASE_URL + '/sos/' + this.state.sosIDToEdit
       const updateSOSResponse = await fetch(url, {
         body: JSON.stringify(updatedSOSInfo),
         credentials: 'include',
@@ -108,7 +108,7 @@ export default class SOSContainer extends Component {
 
   deleteSOS = async () => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/sos/' + this.state.sosIDToEdit
+      const url = process.env.REACT_APP_DATABASE_URL + '/sos/' + this.state.sosIDToEdit
       const deleteSOSResponse = await fetch(url, {
         credentials: 'include',
         method: 'DELETE'
@@ -127,6 +127,20 @@ export default class SOSContainer extends Component {
       }
     } catch(err) {
       console.log('ERROR DELETING SOS.', err)
+    }
+  }
+
+  sendEmail = async (sosIDToEmail) => {
+    console.log(sosIDToEmail)
+    try {
+      const url = process.env.REACT_APP_DATABASE_URL + '/email/' + sosIDToEmail
+      console.log(url)
+      const sosResponse = await fetch(url, { credentials: 'include' })
+      console.log(sosResponse)
+      const sosJson = await sosResponse.json()
+      console.log(sosJson)
+    } catch(err) {
+      console.log('ERROR SENDING EMAIL.', err)
     }
   }
 
@@ -167,7 +181,7 @@ export default class SOSContainer extends Component {
             />
           </Menu.Item>
         </Menu>
-        <Grid>
+        <Grid textAlign='center'>
           <Grid.Column style={{ maxWidth: 1000 }}>
             {
               this.state.displayShowSOS
@@ -185,6 +199,7 @@ export default class SOSContainer extends Component {
               &&
               <ShowSOSs
                 getOneSOS={ this.getOneSOS }
+                sendEmail={ this.sendEmail }
                 soss={ this.state.soss }
                 loggedIn={ this.props.loggedIn }
                 loggedInUserID={ this.props.loggedInUserID }

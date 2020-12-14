@@ -1,33 +1,33 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import { Icon } from 'semantic-ui-react'
+import GoogleMapReact from 'google-map-react'
+import React, { Component } from 'react'
 
 export default class SimpleMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 38.999715,
-      lng: -77.025305
-    },
-    zoom: 17
-  };
-
   render() {
     return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '50vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{
-            key: '',
+            key: process.env.REACT_APP_GOOGLE_API_KEY,
             language: 'en' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultCenter={{ lat: 39.801872, lng: -98.179372 }}
+          defaultZoom={ 4 }
+          onClick={ this.props.selectLocation }
         >
-          <AnyReactComponent
-            lat={38.999715}
-            lng={-77.025305}
-            text="X"
-          />
+          <Icon.Group
+            lat={ this.props.lat }
+            lng={ this.props.lng }
+            size='big'
+          >
+            <Icon
+              color='red'
+              name='home'
+            />
+            <Icon
+              corner='top left'
+              name='x'
+            />
+          </Icon.Group>
         </GoogleMapReact>
       </div>
     )
