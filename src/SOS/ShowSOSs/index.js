@@ -6,8 +6,12 @@ export default function ShowSOSs(props) {
 
   const soss = props.soss.map(sos => {
     return (
-      <Item key={ sos.id }>
+      <Item
+        className='displayItem'
+        key={ sos.id }
+      >
         <Item.Image
+          className='avatar'
           size='small'
           src={ sos.user.photo }
         />

@@ -25,8 +25,12 @@ export default class ShowPost extends Component {
   render() {
     return (
       <React.Fragment>
-        <Item key={ this.props.postToEdit.id }>
+        <Item
+          className='displayItem'
+          key={ this.props.postToEdit.id }
+        >
           <Item.Image
+            className='avatar'
             size='small'
             src={ this.props.postToEdit.user.photo }
           />
@@ -69,46 +73,3 @@ export default class ShowPost extends Component {
     )
   }
 }
-
-  // <React.Fragment>
-  //   <Card
-  //     centered={ true }
-  //     color={ 'blue' }
-  //     key={ this.props.postToEdit.id }
-  //     raised={ true }
-  //   >
-  //     <Image
-  //       src={ this.props.postToEdit.user.photo }
-  //       wrapped ui={ false }
-  //     />
-  //     <Card.Content>
-  //       <Card.Header>
-  //         { this.props.postToEdit.user.username }
-  //       </Card.Header>
-  //       <Card.Meta>
-  //         { this.props.postToEdit.activity } at { this.props.postToEdit.location }
-  //       </Card.Meta>
-  //       <Card.Description>
-  //         { this.props.postToEdit.description }
-  //       </Card.Description>
-  //       {
-  //         this.props.postToEdit.user.id === this.props.loggedInUserID
-  //         &&
-  //           <React.Fragment>
-  //             <Button onClick={ this.props.deletePost }>DELETE</Button>
-  //             <Button onClick={ this.toggleEditPostForm }>EDIT</Button>
-  //           </React.Fragment>
-  //       }
-  //     </Card.Content>
-  //   </Card>
-  //   {
-  //     this.state.displayEditPostForm
-  //     &&
-  //       <EditPostForm
-  //         toggleEditPostForm={ this.toggleEditPostForm }
-  //         updatePost={ this.props.updatePost }
-  //         displayEditPostForm={ this.state.displayEditPostForm }
-  //         postToEdit={ this.props.postToEdit }
-  //       />
-  //   }
-  // </React.Fragment>

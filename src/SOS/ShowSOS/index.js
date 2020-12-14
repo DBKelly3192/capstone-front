@@ -25,8 +25,12 @@ export default class ShowSOS extends Component {
   render() {
     return (
       <React.Fragment>
-        <Item key={ this.props.sosToEdit.id }>
+        <Item
+          className='displayItem'
+          key={ this.props.sosToEdit.id }
+        >
           <Item.Image
+            className='avatar'
             size='small'
             src={ this.props.sosToEdit.user.photo }
           />

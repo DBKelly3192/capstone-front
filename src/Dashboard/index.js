@@ -30,7 +30,9 @@ export default class Dashboard extends Component {
   render() {
     return(
       <React.Fragment>
-        <Menu size='huge'>
+        <Menu
+          className='mainMenu'
+          size='huge'>
           <Menu.Item>
             <Button
               content='View SOS'

@@ -169,8 +169,10 @@ export default class PostContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <Menu size='small'>
-          <Container>
+        <Menu
+          secondary
+          size='small'
+        >
           <Menu.Item>
             <Button
               content='View All Posts'
@@ -189,7 +191,6 @@ export default class PostContainer extends Component {
               onClick={ this.toggleCreatePostForm }
             />
           </Menu.Item>
-          </Container>
         </Menu>
         {
           this.state.displayShowPost

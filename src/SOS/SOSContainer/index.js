@@ -167,7 +167,10 @@ export default class SOSContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <Menu size='small'>
+        <Menu
+          secondary
+          size='small'
+        >
           <Menu.Item>
             <Button
               content='Create SOS'

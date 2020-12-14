@@ -46,26 +46,32 @@ body {
   background-size: cover !important;
 }
 
-.item {
+.avatar {
   background: white !important;
-  text-align: left !important;
-  border: 2px solid black !important;
-  border-radius: 20px !important;
-}
-
-.image {
   border: 2px solid black !important;
   border-radius: 20px !important;
   margin: 5px 0 5px 5px !important;
   padding: 10px !important;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.displayItem {
+  background: #daab3c !important;
+  text-align: left !important;
+  border: 2px solid black !important;
+  border-radius: 20px !important;
+}
+
+.mainMenu {
+  border: 2px solid black !important;
+  background: #daab3c !important;
+}
+
 .segment {
   border: 2px solid black !important;
   border-radius: 20px !important;
   background: #3a9c8a !important;
-}
-
-.hidden {
-  display: none !important;
 }
