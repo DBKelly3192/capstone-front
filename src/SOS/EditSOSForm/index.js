@@ -1,3 +1,4 @@
+import SimpleMap from '../../SimpleMap'
 import { Button, Form, Label, Modal } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
@@ -9,7 +10,8 @@ export default class EditSOSForm extends Component {
       activity: this.props.sosToEdit.activity,
       description: this.props.sosToEdit.description,
       finish: this.props.sosToEdit.finish,
-      location: this.props.sosToEdit.location,
+      lat: this.props.sosToEdit.lat,
+      lng: this.props.sosToEdit.lng,
       start: this.props.sosToEdit.start,
     }
   }
@@ -30,8 +32,16 @@ export default class EditSOSForm extends Component {
       activity: '',
       description: '',
       finish: '',
-      location: '',
+      lat: '',
+      lng: '',
       start: ''
+    })
+  }
+
+  selectLocation = (event) => {
+    this.setState({
+      lat: event.lat,
+      lng: event.lng
     })
   }
 
@@ -67,7 +77,6 @@ export default class EditSOSForm extends Component {
             />
             <Label>Start Time:</Label>
             <Form.Input
-              fluid
               type="text"
               name="start"
               value={ this.state.start }
@@ -75,7 +84,6 @@ export default class EditSOSForm extends Component {
             />
             <Label>End Time:</Label>
             <Form.Input
-              fluid
               type="text"
               name="finish"
               value={ this.state.finish }
@@ -87,6 +95,27 @@ export default class EditSOSForm extends Component {
               control='textarea'
               name='description'
               value={ this.state.description }
+              onChange={ this.handleChange }
+            />
+            <Form.Input
+              className='hidden'
+              required
+              type="text"
+              name="lat"
+              value={ this.state.lat }
+              onChange={ this.handleChange }
+            />
+            <SimpleMap
+              selectLocation={ this.selectLocation }
+              lat={ this.state.lat }
+              lng={ this.state.lng }
+            />
+            <Form.Input
+              className='hidden'
+              required
+              type="text"
+              name="lng"
+              value={ this.state.lng }
               onChange={ this.handleChange }
             />
             <Button

@@ -7,10 +7,10 @@ export default function ShowSOSs(props) {
   const soss = props.soss.map(sos => {
     return (
       <Item key={ sos.id }>
-      <Item.Image
-        size='small'
-        src={ sos.user.photo }
-      />
+        <Item.Image
+          size='small'
+          src={ sos.user.photo }
+        />
       <Item.Content>
         <Item.Header verticalalign='middle'>
           { sos.user.username }

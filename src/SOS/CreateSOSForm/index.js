@@ -1,3 +1,4 @@
+import SimpleMap from '../../SimpleMap'
 import { Button, Form, Modal, Segment } from 'semantic-ui-react'
 import React, { Component } from 'react'
 
@@ -9,7 +10,8 @@ export default class CreateSOSForm extends Component {
       activity: '',
       description: '',
       finish: '',
-      location: '',
+      lat: '',
+      lng: '',
       start: ''
     }
   }
@@ -30,8 +32,16 @@ export default class CreateSOSForm extends Component {
       activity: '',
       description: '',
       finish: '',
-      location: '',
+      lat: '',
+      lng: '',
       start: ''
+    })
+  }
+
+  selectLocation = (event) => {
+    this.setState({
+      lat: event.lat,
+      lng: event.lng
     })
   }
 
@@ -88,6 +98,27 @@ export default class CreateSOSForm extends Component {
                 name="description"
                 placeholder="Enter a Description"
                 value={ this.state.description }
+                onChange={ this.handleChange }
+              />
+              <Form.Input
+                className='hidden'
+                required
+                type="text"
+                name="lat"
+                value={ this.state.lat }
+                onChange={ this.handleChange }
+              />
+              <SimpleMap
+                selectLocation={ this.selectLocation }
+                lat={ this.state.lat }
+                lng={ this.state.lng }
+              />
+              <Form.Input
+                className='hidden'
+                required
+                type="text"
+                name="lng"
+                value={ this.state.lng }
                 onChange={ this.handleChange }
               />
               <Button
