@@ -25,6 +25,7 @@ export default class App extends Component {
       const createUserResponse = await fetch(url, {
         body: JSON.stringify(userToAdd),
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
         method: 'POST'
