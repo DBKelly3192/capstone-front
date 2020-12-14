@@ -67,14 +67,6 @@ export default class EditSOSForm extends Component {
               value={ this.state.activity }
               onChange={ this.handleChange }
             />
-            <Label>Location:</Label>
-            <Form.Input
-              fluid
-              type='text'
-              name='location'
-              value={ this.state.location }
-              onChange={ this.handleChange }
-            />
             <Label>Start Time:</Label>
             <Form.Input
               type="text"
