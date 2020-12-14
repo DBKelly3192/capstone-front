@@ -56,8 +56,8 @@ export default class EditSOSForm extends Component {
         onClose={ this.props.toggleEditSOSForm }
         onSubmit={ this.handleSubmit }
       >
-        <Modal.Header>Update SOS</Modal.Header>
-        <Modal.Content>
+        <Modal.Header className='orange'>Update SOS</Modal.Header>
+        <Modal.Content className='orange'>
           <Modal.Description>
             <Label>Activity:</Label>
             <Form.Input

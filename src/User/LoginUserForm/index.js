@@ -31,7 +31,10 @@ export default class LoginUserForm extends Component {
   render() {
     return (
       <Form onSubmit={ this.handleSubmit }>
-        <Segment stacked>
+        <Segment
+          className='green'
+          stacked
+        >
           <Form.Input
             required
             type='text'

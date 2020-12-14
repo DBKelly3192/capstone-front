@@ -52,9 +52,12 @@ export default class CreatePostForm extends Component {
         onClose={ this.props.toggleCreatePostForm }
         onSubmit={ this.handleSubmit }
       >
-        <Modal.Header>Create New Post</Modal.Header>
-        <Modal.Content>
-          <Segment stacked>
+        <Modal.Header className='orange'>Create New Post</Modal.Header>
+        <Modal.Content className='orange'>
+          <Segment
+            className='green'
+            stacked
+          >
             <Modal.Description>
               <Form.Input
                 fluid

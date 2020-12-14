@@ -56,9 +56,12 @@ export default class CreateSOSForm extends Component {
         onClose={ this.props.toggleCreateSOSForm }
         onSubmit={ this.handleSubmit }
       >
-        <Modal.Header>Create New SOS</Modal.Header>
-        <Modal.Content>
-          <Segment stacked>
+        <Modal.Header className='orange'>Create New SOS</Modal.Header>
+        <Modal.Content className='orange'>
+          <Segment
+            className='green'
+            stacked
+          >
             <Modal.Description>
               <Form.Input
                 required

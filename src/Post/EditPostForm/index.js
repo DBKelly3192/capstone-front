@@ -52,8 +52,8 @@ export default class EditPostForm extends Component {
         onClose={ this.props.toggleEditPostForm }
         onSubmit={ this.handleSubmit }
       >
-        <Modal.Header>Update Post</Modal.Header>
-        <Modal.Content>
+        <Modal.Header className='orange'>Update Post</Modal.Header>
+        <Modal.Content className='orange'>
           <Modal.Description>
             <Label>Activity:</Label>
             <Form.Input

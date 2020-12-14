@@ -59,7 +59,7 @@ body {
 }
 
 .displayItem {
-  background: #daab3c !important;
+  background: #3a9c8a !important;
   text-align: left !important;
   border: 2px solid black !important;
   border-radius: 20px !important;
@@ -73,5 +73,13 @@ body {
 .segment {
   border: 2px solid black !important;
   border-radius: 20px !important;
+  background: #daab3c !important;
+}
+
+.orange {
+  background: #daab3c !important;
+}
+
+.green {
   background: #3a9c8a !important;
 }

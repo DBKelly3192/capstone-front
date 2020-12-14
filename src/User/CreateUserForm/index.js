@@ -91,9 +91,15 @@ export default class CreateUserForm extends Component {
         onClose={ this.props.toggleCreateUserForm }
         onSubmit={ this.handleSubmit }
       >
-        <Modal.Header>Create New User</Modal.Header>
-        <Modal.Content image>
-          <Segment stacked>
+        <Modal.Header className='orange'>Create New User</Modal.Header>
+        <Modal.Content
+          className='orange'
+          image
+        >
+          <Segment
+            className='green'
+            stacked
+          >
             <Image
               fluid
               src="https://t4.ftcdn.net/jpg/02/11/73/73/360_F_211737333_nxBcIVfrybNy6nRiewn9Ynh20UJQCfSp.jpg"
